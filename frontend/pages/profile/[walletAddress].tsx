@@ -1,0 +1,112 @@
+import { Avatar, Container, Flex, Heading, SimpleGrid, Spinner, Text, Toast, useToast } from "@chakra-ui/react";
+import { useAddress, useContract, useContractRead } from "@thirdweb-dev/react";
+import { HEDERA_WHISPER_CONTRACT_ADDRESS } from "../../const/addresses";
+import BalanceCard from "../../components/BalanceCard";
+import abi from "../../abi/abi";
+import accountabstractionabi from "../../abi/accountabstractionabi";
+import { Web3Button } from "@thirdweb-dev/react";
+import Private from "../../components/private";
+import SendMessage from "../../components/Sendencrypted";
+
+
+export default function AccountPage() {
+    const address = useAddress();
+    const toast = useToast();
+
+
+    function truncateAddress(address: string) {
+        return `${address.substring(0, 6)}...${address.substring(address.length - 4)}`;
+    };
+
+    const {
+        contract: transferContract,
+    } = useContract(HEDERA_WHISPER_CONTRACT_ADDRESS, abi);
+
+    const {
+        data: verifiedTokens,
+        isLoading: isVerifiedTokensLoading,
+    } = useContractRead(
+        transferContract,
+        "getAllVerifiedTokens"
+    );
+
+    const { contract: accountabstractionwallet, isLoading: isAccountAbstractionWalletLoading } = useContract("", accountabstractionabi);
+
+    const { data: smc, isLoading: smcloading } = useContractRead(accountabstractionwallet, "getAddress", [address, "0x"]);
+
+
+    return (
+        <Container maxW={"1440px"} py={4}>
+            {address ? (
+                <Flex>
+                    <Flex flexDirection={"column"} mr={8} p={10}>
+                        <Avatar size={"2xl"} mb={4} />
+                        <Text
+                            fontSize={"sm"}
+                            border={"1px solid black"}
+                            textAlign={"center"}
+                            borderRadius={4}
+                        >{truncateAddress(address)}</Text>
+                    </Flex>
+                    <Flex flexDirection={"column"} w={"100%"}>
+                        <Heading>Token Balances</Heading>
+                        <SimpleGrid columns={3} spacing={4} mt={4}>
+                            {!isVerifiedTokensLoading ? (
+                                verifiedTokens.map((token: string) => (
+                                    <BalanceCard
+                                        key={token}
+                                        tokenAddress={token}
+                                    />
+                                )
+
+                                )
+                            ) : (
+                                <Spinner />
+                            )}
+
+                        </SimpleGrid>
+
+                        <Web3Button
+                            contractAddress=""
+                            action={async () => {
+
+                                await accountabstractionwallet?.call(
+                                    "createAccount",
+                                    [
+                                        address,
+                                        "0x"
+                                    ]
+                                );
+                            }}
+                            className="p-8"
+                            onSuccess={() => toast({
+                                title: 'Smart Wallet created ⚡',
+                                description: "Created smart account with your address as owner!",
+                                status: 'success',
+                                duration: 9000,
+                                isClosable: true,
+                            })}
+                        >Deploy your Smart Wallet</Web3Button>
+
+                        {!smcloading ? (
+                            <Flex>
+                                <h2 className="h2"> Your Smart Account Address is : {smc}</h2>
+                            </Flex>
+                        ) : (
+                            <Spinner />
+                        )}
+
+                        <Private />
+
+                        <SendMessage />
+                    </Flex>
+                </Flex>
+            ) : (
+                <Flex>
+                    <Text>Connect Wallet</Text>
+                </Flex>
+            )}
+
+        </Container>
+    )
+}
