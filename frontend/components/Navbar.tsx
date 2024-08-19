@@ -11,7 +11,6 @@ export default function Navbar() {
                 <Link href={"/"}>
                     <Text fontWeight={"black"}>Hedera Whisper</Text>
                 </Link>
-                {address && (
                     <Flex flexDirection={"row"}>
                         <Link href={"/wrapgift"}>
                             <Text mr={8}>Wrap Gift</Text>
@@ -29,11 +28,11 @@ export default function Navbar() {
                             <Text mr={8}>Donate to Charity 💁</Text>
                         </Link>
                         
-                        <Link href={`/profile/${address}`}>
+                        { address  && <Link href={`/profile/${address}`}>
                             <Text>My Account</Text>
                         </Link>
+                        }
                     </Flex>
-                )}
                 <ConnectWallet/>
             </Flex>
         </Container>

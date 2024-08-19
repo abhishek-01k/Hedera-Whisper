@@ -6,8 +6,9 @@ import Link from "next/link";
 import Events from "../components/Events";
 
 const Home: NextPage = () => {
+
   return (
-    <Container maxW={"1440px"}>
+    <Container maxW={"1440px"} className="my-12">
       <Flex h={"75vh"} px={20} borderRadius={20} >
         <Flex flexDirection={"row"}>
           <Flex flexDirection={"column"} justifyContent={"center"} w={"60%"}>

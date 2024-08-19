@@ -5,8 +5,6 @@ import BalanceCard from "../../components/BalanceCard";
 import abi from "../../abi/abi";
 import accountabstractionabi from "../../abi/accountabstractionabi";
 import { Web3Button } from "@thirdweb-dev/react";
-import Private from "../../components/private";
-import SendMessage from "../../components/Sendencrypted";
 
 
 export default function AccountPage() {
@@ -95,10 +93,7 @@ export default function AccountPage() {
                         ) : (
                             <Spinner />
                         )}
-
-                        <Private />
-
-                        <SendMessage />
+                        
                     </Flex>
                 </Flex>
             ) : (
