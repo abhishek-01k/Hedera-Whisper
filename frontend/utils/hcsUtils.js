@@ -6,13 +6,13 @@ import {
     PrivateKey,
     PublicKey,
     TopicMessageSubmitTransaction,
+    TopicCreateTransaction,
 } from '@hashgraph/sdk';
 
 const eciesOptions = {
     curveName: 'secp256k1',
 };
-
-const getClient = () => {
+export const getClient = () => {
     const operatorId = AccountId.fromString(process.env.NEXT_PUBLIC_OPERATOR_ID);
     const operatorKey = PrivateKey.fromStringED25519(process.env.NEXT_PUBLIC_OPERATOR_KEY);
     return Client.forTestnet().setOperator(operatorId, operatorKey);

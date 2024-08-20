@@ -3,6 +3,8 @@
 ## **Overview**
 Hedera Whisper is a decentralized platform designed to facilitate secure, encrypted transactions and messaging on the Hedera network. The application leverages Hedera's SDK for encryption and smart contracts, ensuring that only intended recipients can decrypt sensitive messages stored on the Hedera Consensus Service (HCS). Key features include timelocked and code-based gifts, recurring transactions, and support for verified tokens and charities.
 
+https://github.com/user-attachments/assets/0675a9ca-7432-49ea-8e94-de521e32e069
+
 ## **Features**
 - **Encrypted Messaging:** Secure end-to-end encrypted messaging using the Hedera SDK and ECDSA secp256k1 encryption.
 - **Timelocked Gifts:** Schedule gifts to be unlocked at a specific time, adding a layer of flexibility and security.
@@ -10,6 +12,10 @@ Hedera Whisper is a decentralized platform designed to facilitate secure, encryp
 - **Recurring Transactions:** Automate periodic transactions for seamless transfers, ideal for regular payments or donations.
 - **Charity Support:** Donate securely to verified charities, ensuring transparency and trust.
 - **Verified Tokens:** Manage a list of verified tokens that can be used on the platform.
+
+
+https://github.com/user-attachments/assets/59a7e3c7-fd0e-4a77-b60b-9c3b00e0afb1
+
 
 ## **Table of Contents**
 1. [Prerequisites](#prerequisites)

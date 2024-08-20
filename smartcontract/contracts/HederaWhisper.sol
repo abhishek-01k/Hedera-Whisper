@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-// Hedera Hackathon 2024
+// Hedera Hackathon 2024 0x920cdB18A183bA4BDa521c302E56e3A5347ac8d1
 pragma solidity ^0.8.9;
 
 
@@ -38,6 +38,10 @@ contract HederaWhisper {
     modifier onlyOwner() {
         require(msg.sender == owner, "Only the contract owner can perform this action");
         _;
+    }
+
+    constructor() {
+        owner = msg.sender;
     }
 
     modifier onlyVerifiedToken(address _token) {
