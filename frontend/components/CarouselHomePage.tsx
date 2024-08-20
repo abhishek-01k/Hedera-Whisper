@@ -29,6 +29,21 @@ const steps = [
     { title: 'First', description: 'Contact Info', component: <FeatureCard step="01" title="Select a Token" description="Select from a list of verified tokens from the drop down to send to your friends and family." /> },
     { title: 'Second', description: 'Date & Time', component: <FeatureCard step="02" title="Who to Send To" description="Enter the wallet address of the person you want to send the token to. This is non-reversible so make sure you have the right address." /> },
     { title: 'Third', description: 'Select Rooms', component: <FeatureCard step="03" title="Select the method" description="Simple , Timelock or Recurring" /> },
+    { title: 'Fourth', description: 'Select Rooms', component: <FeatureCard
+        step={"04"}
+        title={"Write a Message"}
+        description={
+          "Write a secret msg to go along with your token transfer. A nicer way to send a message along with the gift to your friends and family."
+        }
+      /> },
+      { title: 'Fifth', description: 'Select Rooms', component: <FeatureCard
+        step={"05"}
+        title={"Input the Unique Claim Code"}
+        description={
+          "Write the unique claim code that will be used to claim by the recipient. This is non-reversible so make sure you input the right code."
+        }
+      /> },
+
     // Add more steps as needed
 ];
 

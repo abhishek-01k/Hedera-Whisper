@@ -60,52 +60,6 @@ const Home: NextPage = () => {
 
       <CarouselHomePage />
 
-      <SimpleGrid columns={2} spacing={4} mt={4}>
-        <Flex>
-          <MediaRenderer src="/placeholder.png" height="100%" width="80%" />
-        </Flex>
-        <Flex
-          flexDirection={"column"}
-          justifyContent={"center"}
-          alignItems={"center"}
-        >
-          <Stack spacing={4}>
-            <FeatureCard
-              step={"01"}
-              title={"Select a Token"}
-              description={
-                "Select from a list of verified tokens from the drop down to send to your friends and family."
-              }
-            />
-            <FeatureCard
-              step={"02"}
-              title={"Who to Send To"}
-              description={
-                "Enter the wallet address of the person you want to send the token to. This is non-reversible so make sure you have the right address."
-              }
-            />
-            <FeatureCard
-              step={"03"}
-              title={"Select the method"}
-              description={"Simple , Timelock or Recurring"}
-            />
-            <FeatureCard
-              step={"04"}
-              title={"Write a Message"}
-              description={
-                "Write a secret msg to go along with your token transfer. A nicer way to send a message along with the gift to your friends and family."
-              }
-            />
-            <FeatureCard
-              step={"05"}
-              title={"Input the Unique Claim Code"}
-              description={
-                "Write the unique claim code that will be used to claim by the recipient. This is non-reversible so make sure you input the right code."
-              }
-            />
-          </Stack>
-        </Flex>
-      </SimpleGrid>
       <Events />
     </Container>
   );
