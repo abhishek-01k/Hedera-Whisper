@@ -1,4 +1,4 @@
-import { Box, Card, Flex, Heading, Input, Text } from "@chakra-ui/react";
+import { Box, Card, Flex, Heading, Input, Text , Button } from "@chakra-ui/react";
 import { useAddress, useContract, useContractRead } from "@thirdweb-dev/react";
 import { HEDERA_WHISPER_CONTRACT_ADDRESS } from "../const/addresses";
 import TokenSelection from "./TokenSelection";
@@ -8,6 +8,8 @@ import TokenBalance from "./TokenBalance";
 import styles from "../styles/Home.module.css";
 import abi from "../abi/abi";
 import ClaimButton from "./ClaimButton";
+import { decryptMessage } from '../utils/hcsUtils';
+
 export default function TransferCard() {
     const address = useAddress();
 
@@ -42,6 +44,22 @@ export default function TransferCard() {
         setSelectedToken(tokenAddress);
     };
 
+    // dewcrypt message
+
+    const [encryptedMessage, setEncryptedMessage] = useState('');
+    const [decryptedMessage, setDecryptedMessage] = useState('');
+    const [privateKey, setPrivateKey] = useState('');
+
+    const handleDecrypt = async () => {
+        try {
+            const decrypted = await decryptMessage(encryptedMessage, privateKey);
+            setDecryptedMessage(decrypted);
+        } catch (error) {
+            console.error('Failed to decrypt message:', error);
+            setDecryptedMessage('Failed to decrypt message.');
+        }
+    };
+
     return (
         <Card w={"50%"} p={20}>
         <Heading>Claim your gift:</Heading>
@@ -65,7 +83,7 @@ export default function TransferCard() {
 
         <TokenBalance tokenAddress={selectedToken} />
 
-<Text mt={4} fontWeight={"bold"}>Claim Code:</Text>
+        <Text mt={4} fontWeight={"bold"}>Claim Code:</Text>
         <Input
             placeholder="Add a unique code here."
             type="text"
@@ -78,6 +96,28 @@ export default function TransferCard() {
                 tokenAddress={selectedToken}
             />
         </Box>
+
+        <div className="my-6">
+            <Input
+                placeholder="Enter encrypted message"
+                value={encryptedMessage}
+                onChange={(e) => setEncryptedMessage(e.target.value)}
+            />
+            <Input
+                placeholder="Enter your private key"
+                value={privateKey}
+                onChange={(e) => setPrivateKey(e.target.value)}
+                mt={2}
+            />
+            <Button onClick={handleDecrypt} mt={4}>
+                Decrypt Message
+            </Button>
+            {decryptedMessage && (
+                <Text mt={4}>
+                    Decrypted Message: {decryptedMessage}
+                </Text>
+            )}
+        </div>
     </Card>
     );
 };

@@ -87,7 +87,7 @@ export default function TransferCard() {
                 onChange={(event) => handleChange(event, "message")}
             />
 
-<Text mt={4} fontWeight={"bold"}>Claim Code:</Text>
+            <Text mt={4} fontWeight={"bold"}>Claim Code:</Text>
             <Input
                 placeholder="Add a unique code here."
                 type="text"

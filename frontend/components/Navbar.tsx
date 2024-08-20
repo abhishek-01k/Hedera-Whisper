@@ -24,6 +24,10 @@ export default function Navbar() {
                                 <Text mr={8}> Time ⌚ Locked Gift</Text>
                             </Link>
 
+                            <Link href="/recurringgift">
+                                <Text mr={8}> Recurring Gifts / Payments</Text>
+                            </Link>
+
                             <Link href={"/donatetocharity"}>
                             <Text mr={8}>Donate to Charity 💁</Text>
                         </Link>

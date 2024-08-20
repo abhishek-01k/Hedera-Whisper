@@ -31,7 +31,7 @@ const Home: NextPage = () => {
             <Stack spacing={4}>
               <Heading fontSize={"xl"} color='grey' as='cite'>Hederawhisper presents</Heading>
               <Heading fontSize={"6xl"}>
-                Send tokens with a secret <span>Gift 🎁</span>
+                Send tokens with a secret wrapped inside a <span>Gift 🎁</span>
               </Heading>
               <Text fontSize={"xl"}>
                 <UnorderedList>

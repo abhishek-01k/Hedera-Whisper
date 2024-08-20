@@ -17,13 +17,10 @@ export default function Events() {
         isLoading: isEventsLoading,
     } = useContractEvents(
         contract,
-        "Transfer",
-        {
-            queryFilter: {
-                fromBlock: 257785,
-            }
-        }
+        "GiftClaimed",
     );
+
+    console.log(events, "events");
 
     return (
         <Box mt={20} w={"100%"}>
