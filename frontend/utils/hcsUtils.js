@@ -1,5 +1,4 @@
-// hcsUtils.js
-import crypto from 'node:crypto';
+// hedera consensus service utility functions
 import standardEcies from 'standard-ecies';
 import {
     Client,
